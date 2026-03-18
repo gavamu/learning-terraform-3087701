@@ -64,12 +64,6 @@ resource "aws_lb_target_group" "blog" {
   vpc_id   = module.blog_vpc.vpc_id
 }
 
-resource "aws_lb_target_group_attachment" "blog" {
-  target_group_arn = aws_lb_target_group.blog.arn
-  target_id        = aws_instance.blog.id
-  port             = 80
-}
-
 module "blog_sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.3.1"
